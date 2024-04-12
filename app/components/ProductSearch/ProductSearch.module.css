@@ -1,0 +1,148 @@
+.nav-search {
+  z-index: 910;
+  will-change: left;
+  transition: left 0.15s ease-out;
+  top: 0;
+  right: 2.8125rem; /* Equivalente a 45px */
+  max-width: 100%;
+  left: -1px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  position: relative;
+  overflow: visible;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.nav-header-visually-hidden {
+  position: absolute;
+  z-index: -1;
+  border: 0;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  display: block;
+}
+
+input[type=text].nav-search-input,
+input[type=search].nav-search-input {
+  position: relative;
+  z-index: 915;
+  color: rgba(0, 0, 0, 0.8980392157);
+  font-size: 1rem; /* Equivalente a 16px */
+  margin: 0;
+  font-family: inherit;
+  border-radius: 0.125rem; /* Equivalente a 2px */
+  background-color: #fff;
+  display: flex;
+  box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.2); /* Equivalente a 0 1px 2px 0 rgba(0, 0, 0, 0.2) */
+  height: 2.5rem; /* Equivalente a 40px */
+  width: 100%;
+  padding: 0.625rem 3.75rem 0.625rem 0.9375rem; /* Equivalente a 10px 60px 10px 15px */
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0);
+  border-width: 0.09375rem; /* Equivalente a 1.5px */
+}
+
+button.nav-search-btn,
+button.nav-search-btn:focus {
+  position: absolute;
+  z-index: 920;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 1.375rem; /* Equivalente a 22px */
+  color: #666;
+  line-height: 1em;
+  border-radius: 0 0.125rem 0.125rem 0; /* Equivalente a 0 2px 2px 0 */
+  width: 2.875rem; /* Equivalente a 46px */
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: auto;
+  background-image: none;
+  height: 2.5rem; /* Equivalente a 40px */
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow: none;
+}
+
+button.nav-search-btn:before,
+button.nav-search-btn:focus:before {
+  content: "";
+  display: block;
+  height: 1.625rem; /* Equivalente a 26px */
+  border-left: 0.0625rem solid #e6e6e6; /* Equivalente a 1px */
+  position: absolute;
+  top: 0.3125rem; /* Equivalente a 5px */
+}
+
+.nav-search-btn .nav-icon-search {
+  font-size: 1rem; /* Equivalente a 16px */
+  line-height: 1.3125rem; /* Equivalente a 21px */
+}
+
+.nav-search-btn .nav-icon-search:before {
+  vertical-align: top;
+  display: inline-block;
+}
+
+/* Estilos para larguras de tela até 320px */
+@media screen and (max-width: 320px) {
+  .nav-search {
+    max-width: 100%;
+    right: 1.875rem; /* Ajuste para 30px */
+  }
+
+  input[type=text].nav-search-input,
+  input[type=search].nav-search-input {
+    font-size: 0.875rem; /* Equivalente a 14px */
+    height: 2.5rem; /* Equivalente a 40px */
+    padding: 0.625rem 3rem 0.625rem 0.9375rem; /* Ajuste para 50px */
+  }
+
+  button.nav-search-btn,
+  button.nav-search-btn:focus {
+    font-size: 1.125rem; /* Ajuste para 18px */
+    width: 3rem; /* Equivalente a 48px */
+    height: 2.5rem; /* Equivalente a 40px */
+  }
+
+  button.nav-search-btn:before,
+  button.nav-search-btn:focus:before {
+    height: 1.625rem; /* Equivalente a 26px */
+    top: 0.3125rem; /* Equivalente a 5px */
+  }
+}
+
+/* Estilos para larguras de tela de 321px a 768px */
+@media screen and (min-width: 321px) and (max-width: 768px) {
+  .nav-search {
+    max-width: 100%;
+  }
+}
+
+/* Estilos para larguras de tela de 769px a 1280px */
+@media screen and (min-width: 769px) and (max-width: 1280px) {
+  .nav-search {
+    max-width: 100%;
+  }
+}
+
+/* Estilos para larguras de tela acima de 1280px */
+@media screen and (min-width: 1281px) {
+
+  .nav-search {
+    max-width: 62.5rem; /* Equivalente a 1000px */
+  }
+}
+

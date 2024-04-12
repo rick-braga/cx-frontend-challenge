@@ -1,0 +1,244 @@
+.ui-search-sidebar {
+  flex: 1 1;
+  flex-wrap: wrap;
+  max-width: 18.5rem;
+  min-width: 13.125rem;
+  padding-right: 0.875rem;
+  width: 100%;
+}
+
+.ui-search-filter-groups {
+  clear: both;
+  margin-top: 2.25rem;
+}
+
+.ui-search-filter-dl {
+  margin-bottom: 1.875rem;
+  padding-right: 1rem;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.ui-search-filter-dl.visible {
+  transform: translateX(0);
+}
+
+.ui-search-filter-dl ul {
+  list-style: none;
+}
+
+.ui-search-filter-dt-title {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 0.625rem;
+}
+
+.ui-search-filter-container {
+  display: flex;
+  font-size: 0.875rem;
+  font-weight: 300;
+  margin: 0 0 0.375rem;
+}
+
+.ui-search-filter-container .ui-search-link {
+  display: flex;
+  flex-wrap: wrap;
+  width: fit-content;
+}
+
+.ui-search-filter-container input[type='radio'] {
+  display: none;
+}
+
+.ui-search-filter-name {
+  color: #666;
+  float: left;
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-left: 0;
+  cursor: pointer;
+}
+
+.ui-search-filter-results-qty {
+  color: #999;
+  float: left;
+  font-size: 0.875rem;
+  font-weight: 300;
+  margin-left: 0.375rem;
+}
+
+.ui-search-price-filter {
+  display: flex;
+  flex-direction: row;
+}
+
+.ui-search-price-filter-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-top: 1.25rem;
+}
+
+.andes-form-control {
+  display: block;
+  padding: 0;
+  font-family: Proxima Nova, -apple-system, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  text-align: left;
+}
+
+.andes-form-control:last-child {
+  margin-right: 0;
+}
+
+.andes-form-control__control {
+  position: relative;
+  width: 100%;
+  min-height: 1.5rem;
+  align-items: left;
+  background-color: #fff;
+  border-radius: 0.375rem;
+  box-shadow: 0 0 0 0.0625rem rgba(0,0,0,.25);
+  display: flex;
+  font-size: 1rem;
+}
+
+.andes-form-control__control:last-child {
+  margin-right: 0;
+}
+
+.andes-form-control__field {
+  background-color: #fafafa;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.8125rem;
+  height: 1.5625rem;
+  width: 5.25rem;
+  line-height: 1.375rem;
+  margin: 0;
+  padding: 0.8125rem 0.75rem;
+}
+
+.andes-form-control__field:focus::placeholder {
+  color: transparent;
+}
+
+.ui-search-price-filter-container:first-child::after {
+  color: rgb(153, 153, 153);
+  content: "—";
+  float: left;
+  font-size: 0.75rem;
+  line-height: 2px;
+  margin: 0 0.3125rem;
+  padding: 0.4375rem 0;
+}
+
+.ui-search-price-filter-action-btn {
+  align-items: center;
+  background-color: #3483fa;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  height: 1.5rem;
+  margin-left: 0.5rem;
+  padding: 0;
+  position: relative;
+  width: 1.5rem;
+}
+
+.ui-search-price-filter-action-btn:disabled {
+  background-color: #e0e0e0;
+  pointer-events: none;
+}
+
+.ui-search-price-filter-action-btn svg {
+  filter: invert(100%) sepia(0) saturate(0) hue-rotate(39deg) brightness(106%) contrast(101%);
+  margin-left: 0.125rem;
+}
+
+.close-button {
+  display: none;
+}
+
+@media screen and (min-width: 20rem) {
+  .ui-search-sidebar {
+    max-width: 100%;
+    min-width: auto;
+    padding-right: 0;
+  }
+
+  .ui-search-filter-dl {
+    padding-right: 0;
+  }
+
+  .andes-form-control__field {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .ui-search-filter-dl {
+    padding: 16px;
+  }
+  .ui-search-filter-dt-title {
+    font-size: 0.875rem;
+  }
+
+  .andes-form-control {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 80rem) {
+}
+
+@media (max-width: 768px) {
+  .ui-search-filter-dl.hidden {
+    transform: translateX(-100%);
+  }
+  .ui-search-filter-dl {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    padding: 0.625rem;
+    width: 80%;
+    max-width: 15.625rem;
+    background-color: #fff;
+    box-shadow: 0.125rem 0 0.3125rem rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .close-button {
+    display: block;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 1.4375rem;
+    height: 1.25rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .close-button::after {
+    content: 'X';
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    color: #fff;
+    background-color: #333;
+    border-radius: 0.1875rem;
+  }
+}

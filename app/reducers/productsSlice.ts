@@ -18,7 +18,7 @@ interface ProductsState {
   minPrice: number;
   maxPrice: number;
   isFilterVisible: boolean;
-  searchQuery: string; // Adicione searchQuery ao estado
+  searchQuery: string;
 }
 
 const initialState: ProductsState = {
@@ -70,6 +70,10 @@ const productsSlice = createSlice({
         state.filteredProducts = state.products;
       }
     },
+    // Ação para atualizar os produtos filtrados
+    updateFilteredProducts(state, action: PayloadAction<Product[]>) {
+      state.filteredProducts = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(searchProducts.pending, (state) => {
@@ -86,6 +90,14 @@ const productsSlice = createSlice({
   },
 });
 
-export const { toggleFilterVisibility, setProducts, setSortOption, applyManualPriceFilter, applyPriceRangeFilter, setSearchQuery } = productsSlice.actions;
+export const {
+  toggleFilterVisibility,
+  setProducts,
+  setSortOption,
+  applyManualPriceFilter,
+  applyPriceRangeFilter,
+  setSearchQuery,
+  updateFilteredProducts, // Exporta a nova ação
+} = productsSlice.actions;
 
 export default productsSlice.reducer;

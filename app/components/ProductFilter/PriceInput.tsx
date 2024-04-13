@@ -5,6 +5,10 @@ interface PriceInputProps {
   selectedFilter: string | null;
   setSelectedFilter: Dispatch<SetStateAction<string | null>>;
   applyPriceFilter: (filterId: string, minPrice?: number, maxPrice?: number) => void;
+  minPrice?: string;
+  maxPrice?: string;
+  setMinPrice: React.Dispatch<React.SetStateAction<string>>;
+  setMaxPrice: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const PriceInput: React.FC<PriceInputProps> = ({

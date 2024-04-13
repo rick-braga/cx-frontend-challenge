@@ -1,46 +1,42 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/reducers/rootReducer';
-import { setSortOption, toggleFilterVisibility, applyManualPriceFilter, applyPriceRangeFilter, searchProducts } from '@/reducers/productsSlice'; // Importa as ações necessárias
+import {
+  setSortOption,
+  toggleFilterVisibility,
+  applyManualPriceFilter,
+  applyPriceRangeFilter,
+  searchProducts
+} from '@/reducers/productsSlice';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import styles from '@/components/SearchResult/SearchResult.module.css';
 import ProductFilter from '../ProductFilter/ProductFilter';
 import SearchSort from '../SearchSort/SearchSort';
 import { Product } from '@/types/types';
 import { priceFilters, getPriceRange } from '@/utils/priceFilters';
-import { AppDispatch } from '@/store/store'; 
-
+import { AppDispatch } from '@/store/store';
 
 const SearchResult: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const queryFromState: string = useSelector((state: RootState) => state.products.searchQuery);
+  const queryFromState = useSelector((state: RootState) => state.products.searchQuery);
   const products = useSelector((state: RootState) => state.products.products);
   const sortOption = useSelector((state: RootState) => state.products.sortOption);
-  const filteredProducts = useSelector((state: RootState) => state.products.filteredProducts); 
+  const filteredProducts = useSelector((state: RootState) => state.products.filteredProducts);
   const selectedPriceFilter = useSelector((state: RootState) => state.products.selectedPriceFilter);
   const minPrice = useSelector((state: RootState) => state.products.minPrice);
   const maxPrice = useSelector((state: RootState) => state.products.maxPrice);
   const isFilterVisible = useSelector((state: RootState) => state.products.isFilterVisible);
 
+  // Estado local para produtos filtrados
+  const [localFilteredProducts, setLocalFilteredProducts] = useState<Product[]>(filteredProducts);
+
   useEffect(() => {
-    const actionResultPromise = dispatch(searchProducts(queryFromState));
-  
-    actionResultPromise
-      .then((actionResult) => {
-        if (searchProducts.fulfilled.match(actionResult)) {
-          // Ação foi cumprida, o payload é do tipo Product[]
-          console.log('Produtos carregados:', actionResult.payload);
-        } else if (searchProducts.rejected.match(actionResult)) {
-          // Ação foi rejeitada, o payload pode ser de qualquer tipo
-          console.error('Falha ao carregar produtos:', actionResult.payload);
-        }
-      })
-      .catch((error) => {
-        // Erro ao despachar a ação ou erro não relacionado ao Redux
-        console.error('Erro ao buscar produtos:', error);
-      });
+    dispatch(searchProducts(queryFromState));
   }, [dispatch, queryFromState]);
-  
+
+  useEffect(() => {
+    setLocalFilteredProducts(filteredProducts);
+  }, [filteredProducts]);
 
   const availableSorts = [
     { id: 'relevance', name: 'Mais relevante' },
@@ -48,16 +44,16 @@ const SearchResult: React.FC = () => {
     { id: 'price-low', name: 'Menor preço' }
   ];
 
-  const sortedProducts = (filteredProducts: Product[]) => {
+  const sortedProducts = (products: Product[]) => {
     switch (sortOption) {
       case 'relevance':
-        return filteredProducts;
+        return products;
       case 'price-high':
-        return [...filteredProducts].sort((a: Product, b: Product) => b.price - a.price);
+        return [...products].sort((a, b) => b.price - a.price);
       case 'price-low':
-        return [...filteredProducts].sort((a: Product, b: Product) => a.price - b.price);
+        return [...products].sort((a, b) => a.price - b.price);
       default:
-        return filteredProducts;
+        return products;
     }
   };
 
@@ -69,8 +65,8 @@ const SearchResult: React.FC = () => {
     dispatch(toggleFilterVisibility());
   };
 
-  const applyManualPriceFilterHandler = (minPrice: number, maxPrice: number) => {
-    dispatch(applyManualPriceFilter({ minPrice, maxPrice }));
+  const applyManualPriceFilterHandler = (min: number, max: number) => {
+    dispatch(applyManualPriceFilter({ minPrice: min, maxPrice: max }));
   };
 
   const applyPriceRangeFilterHandler = (filterId: string) => {
@@ -78,9 +74,9 @@ const SearchResult: React.FC = () => {
     dispatch(applyPriceRangeFilter({ minAmount, maxAmount }));
   };
 
-  const applyPriceFilter = (filterId: string, minPrice?: number, maxPrice?: number) => {
-    if (minPrice !== undefined && maxPrice !== undefined) {
-      applyManualPriceFilterHandler(minPrice, maxPrice);
+  const applyPriceFilter = (filterId: string, min?: number, max?: number) => {
+    if (min !== undefined && max !== undefined) {
+      applyManualPriceFilterHandler(min, max);
     } else {
       applyPriceRangeFilterHandler(filterId);
     }
@@ -89,23 +85,28 @@ const SearchResult: React.FC = () => {
   return (
     <div className={styles['ui-search']}>
       <section className={styles['ui-search-sort']}>
-        <SearchSort handleSortChange={handleSortChange} availableSorts={availableSorts} toggleFilterVisibility={handleToggleFilterVisibility} />
+        <SearchSort
+          handleSortChange={handleSortChange}
+          availableSorts={availableSorts}
+          toggleFilterVisibility={handleToggleFilterVisibility}
+        />
       </section>
       <div className={styles['ui-search-main']}>
         <aside className={styles['ui-search-sidebar']}>
           <ProductFilter
-              priceFilters={priceFilters}
-              selectedFilter={selectedPriceFilter}
-              applyPriceFilter={applyPriceFilter}
-              minPrice={minPrice}
-              maxPrice={maxPrice}
-              products={filteredProducts}
-              isFilterVisible={isFilterVisible}
-              toggleFilterVisibility={handleToggleFilterVisibility}
-            />
+            priceFilters={priceFilters}
+            selectedFilter={selectedPriceFilter}
+            applyPriceFilter={applyPriceFilter}
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+            products={localFilteredProducts}
+            isFilterVisible={isFilterVisible}
+            toggleFilterVisibility={handleToggleFilterVisibility}
+            setFilteredProducts={setLocalFilteredProducts}
+          />
         </aside>
         <section className={styles['ui-search-results']}>
-          {sortedProducts(filteredProducts).map((product: Product) => (
+          {sortedProducts(localFilteredProducts).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </section>

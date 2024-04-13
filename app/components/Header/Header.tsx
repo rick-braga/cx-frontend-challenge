@@ -6,7 +6,7 @@ const Header: React.FC = () => {
     <header className={styles['nav-header']}>
       <div className={styles['nav-bounds']}>
         <div className={styles['nav-logo']}>
-          <a href="//www.mercadolivre.com.ar">Mercado Libre Argentina - Donde comprar y vender de todo</a>
+          <a href="https://www.mercadolibre.com.ar/">Mercado Libre Argentina - Donde comprar y vender de todo</a>
         </div>
         <ProductSearch/>
       </div>

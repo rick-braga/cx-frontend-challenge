@@ -19,7 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <span>$</span>
             <span>{product.price}</span>
           </span>
-          {product.shipping.free_shipping ? (
+          {product.free_shipping ? (
             <span className={styles['product-card__shipping']} title='Envío gratis'>Envío gratis</span>
           ) : (
             ""

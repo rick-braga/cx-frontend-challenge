@@ -11,6 +11,9 @@ interface ProductFilterProps {
   setFilteredProducts: React.Dispatch<React.SetStateAction<Product[]>>;
   isFilterVisible: boolean;
   toggleFilterVisibility: () => void;
+  selectedFilter: string | null;
+  minPrice?: number;
+  maxPrice?: number;
 }
 
 const ProductFilter: React.FC<ProductFilterProps> = ({

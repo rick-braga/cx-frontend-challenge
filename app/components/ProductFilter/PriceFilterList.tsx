@@ -9,6 +9,10 @@ interface PriceFilterListProps {
   applyPriceFilter: (filterId: string, minPrice?: number, maxPrice?: number) => void;
   products: Product[];
   setFilteredProducts: Dispatch<SetStateAction<Product[]>>;
+  minPrice?: string;
+  maxPrice?: string;
+  setMinPrice: React.Dispatch<React.SetStateAction<string>>;
+  setMaxPrice: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const PriceFilterList: React.FC<PriceFilterListProps> = ({
@@ -24,13 +28,18 @@ const PriceFilterList: React.FC<PriceFilterListProps> = ({
   useEffect(() => {
     const quantityMap: { [key: string]: number } = {};
     priceFilters.forEach(filter => {
-      const [minFilter, maxFilter] = filter.id.split('-').map(parseFloat);
+      const [minFilter, maxFilter] = filter.id.split('-').map(Number);
+      console.log('Filter:', filter.id, 'Min:', minFilter, 'Max:', maxFilter);
       quantityMap[filter.id] = products.reduce((sum, product) => {
-        return product.price >= minFilter && product.price <= maxFilter ? sum + product.available_quantity : sum;
+        const productPrice = Math.round(product.price);
+        const quantity = product.available_quantity ?? 0;
+        console.log('Product:', product.id, 'Price:', productPrice, 'Quantity:', quantity);
+        return productPrice >= minFilter && productPrice <= maxFilter ? sum + quantity : sum;
       }, 0);
     });
     setTotalQuantity(quantityMap);
   }, [products, priceFilters]);
+  
 
   const handleFilterChange = (filterId: string) => {
     setSelectedFilter(filterId);
@@ -39,9 +48,9 @@ const PriceFilterList: React.FC<PriceFilterListProps> = ({
 
   return (
     <ul>
-      {priceFilters.map((filter: PriceFilter) => (
-        <li key={filter.id} className={styles['ui-search-filter-container']}>
-          <input
+    {priceFilters.map((filter: PriceFilter) => (
+      <li key={filter.id} className={styles['ui-search-filter-container']}>
+        <input
             className={styles['ui-search-link']}
             type="radio"
             id={filter.id}
@@ -51,10 +60,12 @@ const PriceFilterList: React.FC<PriceFilterListProps> = ({
             onChange={() => handleFilterChange(filter.id)}
           />
           <label htmlFor={filter.id} className={styles['ui-search-filter-name']}>{filter.name}</label>
-          <span className={styles['ui-search-filter-results-qty']}>({totalQuantity[filter.id]})</span>
-        </li>
-      ))}
-    </ul>
+          <span className={styles['ui-search-filter-results-qty']}>
+            ({totalQuantity[filter.id] ?? 0})
+          </span>
+      </li>
+    ))}
+  </ul>
   );
 };
 

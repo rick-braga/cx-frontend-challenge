@@ -13,9 +13,9 @@ describe('SearchSort component', () => {
   const handleSortChangeMock = jest.fn();
   const toggleFilterVisibilityMock = jest.fn();
   const availableSortsMock = [
-    { id: 'relevance', name: 'Mais relevante' },
-    { id: 'price-high', name: 'Maior preço' },
-    { id: 'price-low', name: 'Menor preço' }
+    { id: 'relevance', name: 'Más relevantes' },
+    { id: 'price-high', name: 'Mayor precio' },
+    { id: 'price-low', name: 'Menor precio' }
   ];
 
   it('renders correctly', () => {
@@ -29,9 +29,9 @@ describe('SearchSort component', () => {
       </Provider>
     );
 
-    const sortSelect = getByTestId('sort-select');
-    expect(sortSelect).toBeInTheDocument();
-    expect(sortSelect).toHaveValue('relevance');
+    const sortLabel = getByTestId('sort-label');
+    expect(sortLabel).toBeInTheDocument();
+    expect(sortLabel.textContent).toBe('Ordenar por:');
   });
 
   it('calls handleSortChange when a new option is selected', () => {
@@ -46,7 +46,9 @@ describe('SearchSort component', () => {
     );
 
     const sortSelect = getByTestId('sort-select');
-    fireEvent.change(sortSelect, { target: { value: 'price-high' } });
+    fireEvent.click(sortSelect);
+    const option = getByTestId('price-high');
+    fireEvent.click(option);
     expect(handleSortChangeMock).toHaveBeenCalledWith('price-high');
   });
 

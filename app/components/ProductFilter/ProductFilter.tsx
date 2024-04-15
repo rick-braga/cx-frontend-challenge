@@ -28,7 +28,6 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
   const [minPrice, setMinPrice] = useState<string>('');
   const [maxPrice, setMaxPrice] = useState<string>('');
 
-  // Função para aplicar o filtro selecionado
   const handleApplyFilter = (filterId: string, min?: number, max?: number) => {
     setSelectedFilter(filterId);
     applyPriceFilter(filterId, min, max);

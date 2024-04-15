@@ -39,9 +39,9 @@ const SearchResult: React.FC = () => {
   }, [filteredProducts]);
 
   const availableSorts = [
-    { id: 'relevance', name: 'Mais relevante' },
-    { id: 'price-high', name: 'Maior preço' },
-    { id: 'price-low', name: 'Menor preço' }
+    { id: 'relevance', name: 'Más relevantes' },
+    { id: 'price-high', name: 'Mayor precio' },
+    { id: 'price-low', name: 'Menor precio' }
   ];
 
   const sortedProducts = (products: Product[]) => {

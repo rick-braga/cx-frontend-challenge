@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Product } from '@/types/types'; // Ajuste o caminho de importação conforme necessário
+import { Product } from '@/types/types';
 
 interface PriceFilter {
   id: string;
   name: string;
-  // ... outros campos que você possa ter para o filtro de preço
 }
 
 const usePriceFilter = (products: Product[], priceFilters: PriceFilter[]) => {
@@ -16,7 +15,6 @@ const usePriceFilter = (products: Product[], priceFilters: PriceFilter[]) => {
   useEffect(() => {
     let filtered = products;
   
-    // Filtra por filtro de preço selecionado, se houver
     if (selectedFilter) {
       const [minFilterPrice, maxFilterPrice] = selectedFilter.split('-').map(Number);
       filtered = filtered.filter(product => 
@@ -24,7 +22,6 @@ const usePriceFilter = (products: Product[], priceFilters: PriceFilter[]) => {
       );
     }
   
-    // Filtra por preço mínimo e máximo inseridos pelo usuário
     const minPriceValue = minPrice ? Number(minPrice) : null;
     const maxPriceValue = maxPrice ? Number(maxPrice) : null;
   
@@ -36,7 +33,6 @@ const usePriceFilter = (products: Product[], priceFilters: PriceFilter[]) => {
       filtered = filtered.filter(product => product.price <= maxPriceValue);
     }
   
-    // Atualiza os produtos filtrados
     setFilteredProducts(filtered);
   }, [minPrice, maxPrice, selectedFilter, products]);
   

@@ -29,11 +29,9 @@ const PriceFilterList: React.FC<PriceFilterListProps> = ({
     const quantityMap: { [key: string]: number } = {};
     priceFilters.forEach(filter => {
       const [minFilter, maxFilter] = filter.id.split('-').map(Number);
-      console.log('Filter:', filter.id, 'Min:', minFilter, 'Max:', maxFilter);
       quantityMap[filter.id] = products.reduce((sum, product) => {
         const productPrice = Math.round(product.price);
         const quantity = product.available_quantity ?? 0;
-        console.log('Product:', product.id, 'Price:', productPrice, 'Quantity:', quantity);
         return productPrice >= minFilter && productPrice <= maxFilter ? sum + quantity : sum;
       }, 0);
     });

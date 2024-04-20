@@ -4,7 +4,6 @@ Este é um projeto desenvolvido utilizando Next.js, uma estrutura de desenvolvim
 ## Como começar
 Siga as instruções abaixo para começar a trabalhar com este projeto em seu ambiente local:
 
-&nbsp;
 
 1. **Clone o repositório:**
 

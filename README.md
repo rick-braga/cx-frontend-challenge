@@ -1,5 +1,6 @@
 # Meli Challenge
-Este é um projeto desenvolvido utilizando Next.js, uma estrutura de desenvolvimento web em React. 
+Este é um projeto desenvolvido utilizando Next.js, uma estrutura de desenvolvimento web em React. Essas são as diretrizes do projeto:
+https://github.com/mercadolibre/cx-frontend-challenge/tree/cx-challenge-v2
 
 ## Como começar
 Siga as instruções abaixo para começar a trabalhar com este projeto em seu ambiente local:
@@ -23,10 +24,12 @@ npm install
 
 
 4. **Inicie o servidor de desenvolvimento:**
+
 npm run dev
 
 
 5. **Acesse o aplicativo:**
+
 Abra seu navegador e visite `http://localhost:3000` para visualizar o aplicativo em execução localmente.
 
 

@@ -4,17 +4,17 @@ Este é um projeto desenvolvido utilizando Next.js, uma estrutura de desenvolvim
 ## Como começar
 Siga as instruções abaixo para começar a trabalhar com este projeto em seu ambiente local:
 
+&nbsp;
+
 1. **Clone o repositório:**
 
 git clone https://github.com/rick-braga/cx-frontend-challenge.git
 
-&nbsp;
 
 2. **Acesse a branch:**
 
 git checkout cx-challenge-v2
 
-&nbsp;
 
 3. **Instale as dependências:**
 
@@ -22,17 +22,14 @@ cd cx-frontend-challenge
 cd app
 npm install
 
-&nbsp;
 
 4. **Inicie o servidor de desenvolvimento:**
 npm run dev
 
-&nbsp;
 
 5. **Acesse o aplicativo:**
 Abra seu navegador e visite `http://localhost:3000` para visualizar o aplicativo em execução localmente.
 
-&nbsp;
 
 ## Estrutura do Projeto
 A estrutura do projeto é organizada da seguinte maneira:
@@ -41,8 +38,6 @@ A estrutura do projeto é organizada da seguinte maneira:
 - **`/components`**: Contém os componentes reutilizáveis da aplicação.
 - **`/public`**: Contém arquivos estáticos, como imagens, que podem ser acessados publicamente.
 - **`/styles`**: Contém arquivos de estilos globais ou compartilhados.
-
-&nbsp;
 
 ## Comandos Disponíveis
 - **`npm run dev`**: Inicia o servidor de desenvolvimento.

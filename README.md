@@ -1,83 +1,60 @@
-# Challenge técnico Mercadolibre
+# Meli Challenge
+Este é um projeto desenvolvido utilizando Next.js, uma estrutura de desenvolvimento web em React. 
 
-Este challenge consiste en **dos partes**, una de frontend y otra de backend. Dado que solemos trabajar en ambos mundos, te pedimos que lo tengas en cuenta a la hora de diseñar y desarrollar las distintas capas del proyecto.
+## Como começar
+Siga as instruções abaixo para começar a trabalhar com este projeto em seu ambiente local:
 
-## Entregable
-Este repositorio es un [Template Repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template), esperamos que lo uses como template para crear tu proyecto, que será el que nos enviarás cuando finalices el challenge con las siguientes condiciones:
-- Tu usuario debe ser el **owner**
-- Si no te especificaron una rama, deberás usar los archivos que están en `master`
-- El repositorio debe tener visibilidad `privada`
-- Una vez que finalices y nos compartas el challenge, te enviaremos los usuarios que van a revisar tu entregable para que los agregues
+1. **Clone o repositório:**
 
-## Tecnologías
+git clone https://github.com/rick-braga/cx-frontend-challenge.git
 
-Solemos usar React para nuestros frontends y NodeJS para nuestros backends (con Express), pero siéntete libre de hacerlo en otra tecnología de **Javascript** si así lo prefieres.
+&nbsp;
 
-## Frontend
+2. **Acesse a branch:**
 
-El frontend debe tener una ruta **/profile** en la cuál se podrá visualizar información general del usuario, un listado de sus compras, y se podrá acceder al detalle de cada una de estas.
+git checkout cx-challenge-v2
 
-- **Información general**
-  - Nombre completo del usuario
-  - Imagen del perfil
-  - Nivel de Mercado Puntos
-  - Restricciones
-- **Mis compras**
-  - Listado de compras, con id de compra, título del ítem, precio, cantidad y fecha de compra, y una forma para ver el detalle de esa compra
-  - Paginado
-- **Detalle de compra**
-  - Forma para volver al listado de compras
-  - Vendedor
-  - Id de la compra
-  - Título del ítem
-  - Imagen del ítem
-  - Fecha de compra
-  - Precio
-  - Cantidad
-  - Estado del pago
-  - Estado del envío
+&nbsp;
 
-## Backend
+3. **Instale as dependências:**
 
-El backend debe tener los endpoints necesarios para servir la información que necesita el frontend. Los endpoints quedan a libre definición, pero debes usar el servicio llamado **`MercadolibreService`** que se encuentra en este repositorio, el cual expone los distintos mocks de información que vas a necesitar. No modifiques los archivos que te entregamos, solamente úsalos en tu solución.
+cd cx-frontend-challenge
+cd app
+npm install
 
-- **MercadolibreService**
-  - getUser
-  - getUserRestrictions
-  - getUserPurchases
-  - getLevel
-  - getShipment
-  - getPayment
+&nbsp;
 
-## Puntos de evaluación
+4. **Inicie o servidor de desenvolvimento:**
+npm run dev
 
-Para este challenge nos interesa ver cómo aplicas todos tus conocimientos en torno a:
+&nbsp;
 
-- **Funcionalidad**
-- **Buenas prácticas de código**
-- **Formato de código**
-  - Handling de errores.
-  - Uso de estructuras de datos.
-  - Tests.
-  - Dependencias.
-  - Uso de las herramientas (como React, Express, CSS / Sass, etc).
-- **Estructura del proyecto**
-- **Escalabilidad**
+5. **Acesse o aplicativo:**
+Abra seu navegador e visite `http://localhost:3000` para visualizar o aplicativo em execução localmente.
 
-Nos interesan soluciones simples, técnicamente correctas, mantenibles y escalables. Es importante entender el alcance del proyecto y usar las herramientas adecuadas para resolver la consigna dada.
+&nbsp;
 
-Ten en cuenta que necesitamos instrucciones para levantar el proyecto, las mismas son ***indispensables*** para poder revisar y corregir tu aplicación. Esto incluye tanto los comandos a ejecutar como también el entorno de desarrollo que debemos tener (toda la información que consideres relevante sobre el stack requerido).
+## Estrutura do Projeto
+A estrutura do projeto é organizada da seguinte maneira:
 
-> **Cuidado!**
->
-> Sin esta información, podríamos decidir ***no continuar*** con la revisión del challenge.
+- **`/pages`**: Contém as páginas da aplicação. Cada arquivo na pasta `pages` corresponde a uma rota da aplicação.
+- **`/components`**: Contém os componentes reutilizáveis da aplicação.
+- **`/public`**: Contém arquivos estáticos, como imagens, que podem ser acessados publicamente.
+- **`/styles`**: Contém arquivos de estilos globais ou compartilhados.
 
-### Tips para Frontend
+&nbsp;
 
-- El diseño queda a libre interpretación, puedes diseñar lo que creas conveniente.
-- La información listada para cada sección es la requerida, no es necesario mostrar otras adicionales.
+## Comandos Disponíveis
+- **`npm run dev`**: Inicia o servidor de desenvolvimento.
+- **`npm run build`**: Compila o projeto para produção.
+- **`npm start`**: Inicia o servidor em modo de produção.
+- **`npm run lint`**: Executa a verificação de linting do código.
+- **`npm run test`**: Executa os testes do projeto.
 
-### Tips para Backend
-
-- Toda la información que necesitas para las pantallas del frontend la puedes encontrar usando el servicio que proveemos. Si no es así, envíanos un mensaje cuanto antes!
-
+## Tecnologias Utilizadas
+- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
+- **Next.js**: Estrutura de desenvolvimento web em React, oferecendo funcionalidades como roteamento baseado em arquivos e renderização do lado do servidor.
+- **Redux**: Biblioteca para gerenciamento de estado da aplicação.
+- **Jest**: Framework de testes para JavaScript.
+- **ESLint**: Ferramenta de linting de código para identificar e reportar problemas no código JavaScript.
+- **CSS Modules**: Abordagem para escrever CSS modular, evitando conflitos de nomenclatura e facilitando a manutenção.

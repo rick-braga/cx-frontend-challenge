@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { Product } from '@/types/types';
-import { searchProductsAPI } from '@/pages/api/search'; // Importa a função de busca da API
+import { searchProductsAPI } from '@/pages/api/search';
 
 export const searchProducts = createAsyncThunk(
   'products/searchProducts',
@@ -90,7 +90,7 @@ export const {
   applyManualPriceFilter,
   applyPriceRangeFilter,
   setSearchQuery,
-  updateFilteredProducts, // Exporta a nova ação
+  updateFilteredProducts,
 } = productsSlice.actions;
 
 export default productsSlice.reducer;

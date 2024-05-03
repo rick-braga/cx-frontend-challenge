@@ -21,7 +21,6 @@ const PriceFilterList: React.FC<PriceFilterListProps> = ({
   setSelectedFilter,
   applyPriceFilter,
   products,
-  setFilteredProducts,
 }) => {
   const [totalQuantity, setTotalQuantity] = useState<{ [key: string]: number }>({});
 
@@ -31,12 +30,11 @@ const PriceFilterList: React.FC<PriceFilterListProps> = ({
       const [minFilter, maxFilter] = filter.id.split('-').map(Number);
       quantityMap[filter.id] = products.reduce((sum, product) => {
         const productPrice = Math.round(product.price);
-        const quantity = product.available_quantity ?? 0;
-        return productPrice >= minFilter && productPrice <= maxFilter ? sum + quantity : sum;
+        return productPrice >= minFilter && productPrice <= maxFilter ? sum + 1 : sum;
       }, 0);
     });
     setTotalQuantity(quantityMap);
-  }, [products, priceFilters]);
+  }, [priceFilters, products]);
   
 
   const handleFilterChange = (filterId: string) => {

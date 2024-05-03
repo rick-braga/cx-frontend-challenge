@@ -26,8 +26,6 @@ const SearchResult: React.FC = () => {
   const minPrice = useSelector((state: RootState) => state.products.minPrice);
   const maxPrice = useSelector((state: RootState) => state.products.maxPrice);
   const isFilterVisible = useSelector((state: RootState) => state.products.isFilterVisible);
-
-  // Estado local para produtos filtrados
   const [localFilteredProducts, setLocalFilteredProducts] = useState<Product[]>(filteredProducts);
 
   useEffect(() => {
